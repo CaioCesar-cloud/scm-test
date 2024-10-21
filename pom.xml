@@ -64,10 +64,10 @@
   </build>
 
   <scm>
-    <!-- Configure seu SCM (Git ou SVN, por exemplo) -->
-    <connection>scm:git:https://github.com/your-repo/scm-mutation-test.git</connection>
-    <developerConnection>scm:git:ssh://github.com/your-repo/scm-mutation-test.git</developerConnection>
-    <url>https://github.com/your-repo/scm-mutation-test</url>
+    <connection>scm:git:https://github.com/CaioCesar-cloud/scm-test.git</connection>
+    <developerConnection>scm:git:git@github.com:CaioCesar-cloud/scm-test.git</developerConnection>
+    <url>https://github.com/CaioCesar-cloud/scm-test</url>
   </scm>
+
 
 </project>
