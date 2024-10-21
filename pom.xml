@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>scm-mutation-test</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>SCM Mutation Test</name>
+
+  <properties>
+    <pitest.version>1.7.0</pitest.version>
+    <maven.scm.version>1.11.3</maven.scm.version>
+    <java.version>11</java.version>
+  </properties>
+
+  <dependencies>
+    <!-- Dependências para testes unitários -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Plugin do Pitest -->
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>${pitest.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>scmMutationCoverage</goal>
+            </goals>
+            <configuration>
+              <mutationThreshold>85</mutationThreshold>
+              <include>ADDED,MODIFIED</include>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Plugin SCM -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>${maven.scm.version}</version>
+        <configuration>
+          <connectionType>connection</connectionType>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <!-- Configure seu SCM (Git ou SVN, por exemplo) -->
+    <connection>scm:git:https://github.com/your-repo/scm-mutation-test.git</connection>
+    <developerConnection>scm:git:ssh://github.com/your-repo/scm-mutation-test.git</developerConnection>
+    <url>https://github.com/your-repo/scm-mutation-test</url>
+  </scm>
+
+</project>
